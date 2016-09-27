@@ -5,3 +5,5 @@
 /bin
 .git
 library/
+*.iml
+.idea

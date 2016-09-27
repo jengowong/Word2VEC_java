@@ -1,5 +1,7 @@
 package com.ansj.vec.util;
 
+import com.ansj.vec.Word2VEC;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,13 +12,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.ansj.vec.Word2VEC;
-
 /**
  * keanmeans聚类
- * 
- * @author ansj
- * 
  */
 public class WordKmeans {
 
@@ -99,9 +96,9 @@ public class WordKmeans {
         public double distance(float[] value) {
             double sum = 0;
             for (int i = 0; i < value.length; i++) {
-                sum += (center[i] - value[i])*(center[i] - value[i]) ;
+                sum += (center[i] - value[i]) * (center[i] - value[i]);
             }
-            return sum ;
+            return sum;
         }
 
         public void putValue(String word, double score) {
@@ -110,6 +107,7 @@ public class WordKmeans {
 
         /**
          * 重新计算中心点
+         *
          * @param wordMap
          */
         public void updateCenter(HashMap<String, float[]> wordMap) {
@@ -138,12 +136,14 @@ public class WordKmeans {
 
         /**
          * 取得每个类别的前n个结果
+         *
          * @param n
-         * @return 
+         *
+         * @return
          */
         public List<Entry<String, Double>> getTop(int n) {
             List<Map.Entry<String, Double>> arrayList = new ArrayList<Map.Entry<String, Double>>(
-                values.entrySet());
+                    values.entrySet());
             Collections.sort(arrayList, new Comparator<Map.Entry<String, Double>>() {
                 @Override
                 public int compare(Entry<String, Double> o1, Entry<String, Double> o2) {
@@ -152,7 +152,7 @@ public class WordKmeans {
                 }
             });
             int min = Math.min(n, arrayList.size() - 1);
-            if(min<=1)return Collections.emptyList() ;
+            if (min <= 1) return Collections.emptyList();
             return arrayList.subList(0, min);
         }
 

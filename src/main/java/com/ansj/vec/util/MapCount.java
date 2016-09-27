@@ -22,7 +22,7 @@ public class MapCount<T> {
 
     public void add(T t, int n) {
         Integer integer = null;
-        if((integer = (Integer)this.hm.get(t)) != null) {
+        if ((integer = (Integer) this.hm.get(t)) != null) {
             this.hm.put(t, Integer.valueOf(integer.intValue() + n));
         } else {
             this.hm.put(t, Integer.valueOf(n));
@@ -51,8 +51,8 @@ public class MapCount<T> {
         StringBuilder sb = new StringBuilder();
         Entry next = null;
 
-        while(iterator.hasNext()) {
-            next = (Entry)iterator.next();
+        while (iterator.hasNext()) {
+            next = (Entry) iterator.next();
             sb.append(next.getKey());
             sb.append("\t");
             sb.append(next.getValue());
